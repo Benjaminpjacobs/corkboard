@@ -10,7 +10,7 @@ const appendToList = (data, dataList) => {
 }
 
 const callForList = (e, dataList) => {
-    $.getJSON('http://localhost:3000/api/search', { query: e.currentTarget.value })
+    $.getJSON('http://localhost:3000/api/v1/search', { query: e.currentTarget.value })
         .then((data) => appendToList(data, dataList))
 }
 

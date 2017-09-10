@@ -8,13 +8,6 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  namespace :api do
-    get '/search', to: 'search#search'
-    resources :industry, only:[:index]
-    resources :category, only:[:index]
-    resources :service, only:[:index]
-  end
-
   namespace :home do
     resources :search
   end
@@ -66,6 +59,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      get '/search', to: 'search#search'
       namespace :projects do
         get '/find_all', to: 'find#index'
         put '/:id', to: 'projects#update'
