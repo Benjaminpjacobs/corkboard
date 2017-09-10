@@ -1,23 +1,23 @@
-App.appearance = App.cable.subscriptions.create "AppearanceChannel",
-  connected: ->
-    @install()
+# App.appearance = App.cable.subscriptions.create "AppearanceChannel",
+#   connected: ->
+#     @install()
 
-  disconnected: ->
-    @uninstall()
+#   disconnected: ->
+#     @uninstall()
 
-  rejected: ->
-    @uninstall()
+#   rejected: ->
+#     @uninstall()
 
-  received: (arr) ->
-    $('.online-list').append("<option id=" + arr[0] + ">" + arr[1] + "</option>")
-    $('#user_' + arr[0]).css('color', 'lawngreen')
+#   received: (arr) ->
+#     $('.online-list').append("<option id=" + arr[0] + ">" + arr[1] + "</option>")
+#     $('#user_' + arr[0]).css('color', 'lawngreen')
 
-  away: (arr) ->
-    @perform("away")
+#   away: (arr) ->
+#     @perform("away")
 
-  install: ->
-    $(document).on "load.appearance", =>
-      @received()
+#   install: ->
+#     $(document).on "load.appearance", =>
+#       @received()
 
-  uninstall: ->
-    $(document).off(".appearance")
+#   uninstall: ->
+#     $(document).off(".appearance")
