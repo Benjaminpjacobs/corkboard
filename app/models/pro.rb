@@ -4,6 +4,7 @@ class Pro < User
   has_many :bids, foreign_key: "user_id"
   has_many :projects, through: :bids
   has_many :reviews, foreign_key: "user_id"
+  
   geocoded_by :zipcode
   after_validation :geocode          
 
@@ -12,7 +13,6 @@ class Pro < User
   end
 
   def accepted_bid_projects
-    # Project.where(status: :accepted, service_id: services)
     projects.where(status: :accepted)
   end
 
