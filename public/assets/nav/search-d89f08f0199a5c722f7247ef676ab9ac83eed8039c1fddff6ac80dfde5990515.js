@@ -10,13 +10,9 @@ const appendToList = (data, dataList) => {
 }
 
 const callForList = (e, dataList) => {
-    $.getJSON('http://localhost:3000/api/v1/search', { query: e.currentTarget.value })
+    $.getJSON('https://corkboard-services.herokuapp.com/api/search', { query: e.currentTarget.value })
         .then((data) => appendToList(data, dataList))
 }
-
-// $.getJSON('https://corkboard-services.herokuapp.com/api/search', { query: search })
-// .then((data) => appendToList(data, dataList))
-// })
 
 document.addEventListener('DOMContentLoaded', () => {
     const searchInputField = document.getElementById('service_search')

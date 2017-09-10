@@ -1,5 +1,4 @@
-// const API = 'https://corkboard-services.herokuapp.com/api/v1/projects';
-const API = 'http://localhost:3000/api/v1/projects';
+const API = 'https://corkboard-services.herokuapp.com/api/v1/projects';
 
 document.addEventListener("DOMContentLoaded", () => {
     const domVars = {
