@@ -116,14 +116,18 @@ class Seed
     project2 = user.projects.create!(service_id: service.id, zipcode: 80223, description: "I'm going to need more french. I'm still pretty bad.", status: "open")
     project3 = user.projects.create!(service_id: service.id, zipcode: 80223, description: "Moar french plz.", status: "accepted")
     project4 = user.projects.create!(service_id: service.id, zipcode: 80223, description: "CAN YOU MAKE ME FLUENT?! This is the job for you!.", status: "accepted")
+    
+    project.bids.create!(user_id: pro.id, amount: "200", comment: "I will really help you!", status: "rejected")
+    project.bids.create!(user_id: pro.id, amount: "100", comment: "Hi, my name is Jimi. I've done several similar jobs in your area and have received some pretty excellent reviews. I'd love to talk more details about your 
+    project. Please call me at 303-123-4345. Thanks!.", status: "accepted")
+    
+    project.create_review(comment: "These French lessons were adequate.", rating: 4.0, user_id: pro.id)
 
-    bid = project.bids.create!(user_id: pro.id, amount: "100", comment: "Hi, my name is Jimi. I've done several similar jobs in your area and have received some pretty excellent reviews. I'd love to talk more details about your project. Please call me at 303-123-4345. Thanks!.", status: "open")
-    bid = project3.bids.create!(user_id: pro.id, amount: "20", comment: "I teach good French.", status: "accepted")
-    bid = project4.bids.create!(user_id: 1, amount: "35", comment: "I teach the best ever French.", status: "accepted")
+    project3.bids.create!(user_id: pro.id, amount: "20", comment: "I teach good French.", status: "accepted")
+    project4.bids.create!(user_id: 1, amount: "35", comment: "I teach the best ever French.", status: "accepted")
 
-    bid = project2.bids.create!(user_id: 1, amount: "300", comment: "I am really spectacular at French.", status: "open")
+    project2.bids.create!(user_id: 1, amount: "300", comment: "I am really spectacular at French.", status: "open")
 
-    review = project.create_review(comment: "These French lessons were adequate.", rating: 4.0, user_id: pro.id)
   end
 
   def generate_project_with_no_review
