@@ -16093,34 +16093,7 @@ var Service = React.createClass({
 
 }).call(this);
 (function() {
-  App.appearance = App.cable.subscriptions.create("AppearanceChannel", {
-    connected: function() {
-      return this.install();
-    },
-    disconnected: function() {
-      return this.uninstall();
-    },
-    rejected: function() {
-      return this.uninstall();
-    },
-    received: function(arr) {
-      $('.online-list').append("<option id=" + arr[0] + ">" + arr[1] + "</option>");
-      return $('#user_' + arr[0]).css('color', 'lawngreen');
-    },
-    away: function(arr) {
-      return this.perform("away");
-    },
-    install: function() {
-      return $(document).on("load.appearance", (function(_this) {
-        return function() {
-          return _this.received();
-        };
-      })(this));
-    },
-    uninstall: function() {
-      return $(document).off(".appearance");
-    }
-  });
+
 
 }).call(this);
 App.messages = App.cable.subscriptions.create("MessagesChannel", {
