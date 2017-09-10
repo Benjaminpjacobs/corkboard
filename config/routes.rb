@@ -3,30 +3,35 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
   #resources :bid, only: [:create, :update]
-  resources :bids
-  resources :messages
-
+  
   root 'home#index'
-
-  namespace :home do
-    resources :search
-  end
-
-  namespace :profile do
-    get '/dashboard', to: 'dashboard#show'
-  end
-
+  
   get 'choose-account', as: 'choose_account', to: 'choose_account#index'
+  
   get '/auth/facebook', as: 'facebook_login'
   get '/auth/:provider/callback', to: 'sessions#create'
+  
   get '/register', to: 'users#new'
   post '/register', to: 'users#create'
+  
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  
   get "users/verify", to: 'users#show_verify', as: 'verify'
   post "users/verify"
   post "users/resend"
+  
+  namespace :home do
+    resources :search
+  end
+  
+  namespace :profile do
+    get '/dashboard', to: 'dashboard#show'
+  end
+  
+  resources :bids
+  resources :messages
 
   resources :pro, only: [:index, :show, :new, :create]
 

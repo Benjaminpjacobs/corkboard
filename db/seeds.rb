@@ -22,7 +22,13 @@ class Seed
   end
 
   def generate_bids_with_conversations
-    pro = Pro.create!(first_name: "Jimi", last_name: "Hendrix", zipcode: "80203", phone_number: "5555055050", email: "jimi@example.com", password: "password", country_code: "+1")
+    pro = Pro.create!(first_name: "Jimi", 
+                      last_name: "Hendrix", 
+                      zipcode: "80203", 
+                      phone_number: "5555055050", 
+                      email: "jimi@example.com", 
+                      password: "password", 
+                      country_code: "+1")
 
     pro_service = pro.pro_services.create(service_id: 1, radius: 30)
     pro_service2 = pro.pro_services.create(service_id: 240, radius: 30)
@@ -31,30 +37,183 @@ class Seed
     pro.pro_services.create(service_id: 90, radius: 30)
     pro.pro_services.create(service_id: 199, radius: 30)
 
-    requester = User.create(first_name: "Burt", last_name: "Reynolds", zipcode: "80203", phone_number: "5555055051", email: "burt@example.com", password: "password", country_code: "+1")
+    requester = User.create(first_name: "Burt",  
+                            last_name: "Reynolds", 
+                            zipcode: "80203", 
+                            phone_number: "5555055051", 
+                            email: "burt@example.com", 
+                            password: "password", 
+                            country_code: "+1")
 
-    project4 = Project.create(status: "open", zipcode: "80203", recurring: true, description: "Help me.", timeline: "ASAP", requester_id: 2, service_id: 1)
+    requester2 = User.create(first_name: "Tom",
+                            last_name: "Brady", 
+                            zipcode: "80203", 
+                            phone_number: "5555055051", 
+                            email: "tomt@example.com", 
+                            password: "password", 
+                            country_code: "+1")
 
-    project3 = Project.create!(service_id: 240, zipcode: "80203", description: "I'm going to need more french. I'm still pretty bad.", status: "accepted", requester_id: 2, timeline: "ASAP")
+    requester3 = User.create(first_name: "Arnold", 
+                            last_name: "Palmer", 
+                            zipcode: "80203", 
+                            phone_number: "5555055051", 
+                            email: "arnie@example.com", 
+                            password: "password", 
+                            country_code: "+1")
 
-    project2 = Project.create!(service_id: 55, zipcode: "80203", description: "Moar french plz.", status: "closed", requester_id: 2, recurring: true, timeline: "ASAP")
+    project1 = Project.create!(service_id: 55, 
+                            zipcode: "80203", 
+                            description: "I needz da french.", 
+                            status: "open", 
+                            requester_id: 1, 
+                            recurring: true, 
+                            timeline: "ASAP")
 
-    Project.create!(service_id: 90, zipcode: "80203", description: "CAN YOU MAKE ME FLUENT?! This is the job for you!.", status: "closed", requester_id: 2, recurring: true, timeline: "ASAP")
+    project2 = Project.create!(service_id: 55, 
+                              zipcode: "80203", 
+                              description: "Moar french plz.", 
+                              status: "closed", 
+                              requester_id: 2, 
+                              recurring: true, 
+                              timeline: "ASAP")
+    
+    project3 = Project.create!(service_id: 240, 
+                              zipcode: "80203", 
+                              description: "I'm going to need more french. I'm still pretty bad.", 
+                              status: "accepted", 
+                              requester_id: 2, 
+                              timeline: "ASAP")
 
-    Project.create!(status: "open", zipcode: "80203", recurring: true, description: "French onion soup, ASAP!", timeline: "ASAP", requester_id: 2, service_id: 2)
+    project4 = Project.create(service_id: 1,
+                              zipcode: "80203",   
+                              description: "Help me. I really just need...please help.", 
+                              status: "open", 
+                              recurring: true, 
+                              requester_id: 2,
+                              timeline: "ASAP")
+                              
+    project5 = Project.create!(service_id: 90,
+                              zipcode: "80203", 
+                              description: "CAN YOU MAKE ME FLUENT?! This is the job for you!.", 
+                              status: "closed", 
+                              recurring: true, 
+                              requester_id: 3,  
+                              timeline: "ASAP")
+    
+    project6 = Project.create!(service_id: 2,
+                              zipcode: "80203", 
+                              description: "French onion soup, ASAP!", 
+                              status: "open", 
+                              recurring: true, 
+                              requester_id: 3,
+                              timeline: "ASAP")
+    
+    project7 = Project.create!(service_id: 240,
+                              zipcode: "80203", 
+                              description: "I speak-a the French.", 
+                              status: "accepted", 
+                              recurring: false, 
+                              requester_id: 3,
+                              timeline: "ASAP") 
 
-    Project.create!(status: "accepted", zipcode: "80203", recurring: false, description: "I speak-a the French.", timeline: "ASAP", requester_id: 2, service_id: 240)
+    project8 = Project.create!(service_id: 240,
+                              zipcode: "80203", 
+                              description: "Hi! I am traveling to France tomorrow! Can you teach me how to speak French tonight???", 
+                              status: "closed", 
+                              recurring: false, 
+                              requester_id: 4, 
+                              timeline: "ASAP")
 
-    Project.create!(status: "accepted", zipcode: "80203", recurring: false, description: "Hi! I am traveling to France tomorrow! Can you teach me how to speak French tonight???", timeline: "ASAP", requester_id: 2, service_id: 240)
 
+    Review.create(comment: "Hey! Thanks for teaching pretty good french!", 
+                  rating: 4.0, 
+                  user_id: pro.id, 
+                  project_id: project2.id)
 
-    Review.create(comment: "Hey! Thanks for teaching pretty good french!", rating: 4.0, user_id: pro.id, project_id: project2.id)
-    Review.create(comment: "Your french accent sounds like you're from Atlantic City. Boo.", rating: 2.0, user_id: pro.id, project_id: project3.id)
-    Review.create(comment: "These French lessons were adequate.", rating: 3.0, user_id: pro.id, project_id: project4.id)
+    Review.create(comment: "These French lessons were adequate.", 
+                  rating: 3.0, 
+                  user_id: pro.id, 
+                  project_id: project5.id)
 
-    bid = Bid.create(user_id: 1, project_id: project4.id, amount: "700", comment: "Hi, my name is Jimi. I've done several similar jobs in your area and have received some pretty excellent reviews. I'd love to talk more details about your project. Please call me at 303-123-4345. Thanks!", status: "open")
+    Review.create(comment: "Your french accent sounds like you're from Atlantic City. Boo.", 
+                  rating: 2.0, 
+                  user_id: pro.id, 
+                  project_id: project8.id)
 
-    bid2 = Bid.create(user_id: 1, project_id: project3.id, amount: "100", comment: "Hi, my name is Jimi. I've done several similar jobs in your area and have received some pretty excellent reviews. I'd love to talk more details about your project. Please call me at 303-123-4345. Thanks!", status: "accepted")
+    
+    project1.bids.create!(
+      user_id: 1,
+      amount: "700",
+      comment: "Hi, my name is Jimi. I've done several similar jobs in your area and have received some pretty excellent reviews. I'd love to talk more details about your project. Please call me at 303-123-4345. Thanks!", 
+      status: "open"
+    )
+
+    project2.bids.create!(
+      user_id: 1,
+      amount: "700",
+      comment: "Hi, my name is Jimi. I've done several similar jobs in your area and have received some pretty excellent reviews. I'd love to talk more details about your project. Please call me at 303-123-4345. Thanks!", 
+      status: "accepted"
+    )
+
+    project3.bids.create!(
+      user_id: 1,
+      amount: "700",
+      comment: "Hi, my name is Jimi. I've done several similar jobs in your area and have received some pretty excellent reviews. I'd love to talk more details about your project. Please call me at 303-123-4345. Thanks!", 
+      status: "accepted"
+    )
+
+    project4.bids.create!(
+      user_id: 1,
+      amount: "700",
+      comment: "Hi, my name is Jimi. I've done several similar jobs in your area and have received some pretty excellent reviews. I'd love to talk more details about your project. Please call me at 303-123-4345. Thanks!", 
+      status: "open"
+    )
+
+    project5.bids.create!(
+      user_id: 1,
+      amount: "700",
+      comment: "Hi, my name is Jimi. I've done several similar jobs in your area and have received some pretty excellent reviews. I'd love to talk more details about your project. Please call me at 303-123-4345. Thanks!", 
+      status: "accepted"
+    )
+
+    project6.bids.create!(
+      user_id: 1,
+      amount: "700",
+      comment: "Hi, my name is Jimi. I've done several similar jobs in your area and have received some pretty excellent reviews. I'd love to talk more details about your project. Please call me at 303-123-4345. Thanks!", 
+      status: "open"
+    )
+
+    project7.bids.create!(
+      user_id: 1,
+      amount: "700",
+      comment: "Hi, my name is Jimi. I've done several similar jobs in your area and have received some pretty excellent reviews. I'd love to talk more details about your project. Please call me at 303-123-4345. Thanks!", 
+      status: "rejected"
+    )
+
+    project8.bids.create!(
+      user_id: 1,
+      amount: "700",
+      comment: "Hi, my name is Jimi. I've done several similar jobs in your area and have received some pretty excellent reviews. I'd love to talk more details about your project. Please call me at 303-123-4345. Thanks!", 
+      status: "accepted"
+    )
+
+    # bid = Bid.create(user_id: 1, 
+    # project_id: project4.id, 
+    # amount: "700", 
+    # comment: "Hi, my name is Jimi. I've done several similar jobs in your area and have received some pretty excellent reviews. I'd love to talk more details about your project. Please call me at 303-123-4345. Thanks!", 
+    # status: "open")
+
+    # bid2 = Bid.create(user_id: 1, 
+    # project_id: project3.id,
+    # amount: "100", 
+    # comment: "Hi, my name is Jimi. I've done several similar jobs in your area and have received some pretty excellent reviews. I'd love to talk more details about your project. Please call me at 303-123-4345. Thanks!", 
+    # status: "accepted")
+    
+    # bid3 = Bid.create(user_id: 1, 
+    # project_id: project2.id, 
+    # amount: "300", 
+    # comment: "Hi, my name is Jimi. I've done several similar jobs in your area and have received some pretty excellent reviews. I'd love to talk more details about your project. Please call me at 303-123-4345. Thanks!", 
+    # status: "accepted")
   end
 
   def generate_industries

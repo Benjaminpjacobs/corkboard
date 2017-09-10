@@ -1,10 +1,4 @@
 class Rating
-  attr_reader :pro
-
-  # def initialize(pro)
-  #   @pro = pro
-  # end
-
   def avg_rating(pro)
     collect_reviews(pro).average(:rating)
   end

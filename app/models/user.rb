@@ -7,10 +7,12 @@ class User < ApplicationRecord
               message: "should be 12345 or 12345-1234",
               allow_blank: true
   validates :email, presence: true, uniqueness: true
+  
   has_secure_password validations: false
 
   has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
+  
   has_many :requested_projects, :class_name => 'Project', :foreign_key => 'requester_id'
 
   has_many :messages
