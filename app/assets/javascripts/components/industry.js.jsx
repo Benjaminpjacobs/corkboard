@@ -18,7 +18,7 @@ var Industry = React.createClass({
     var industry = e.target.parentElement
     if(self.state.categories.length === 0){
       $.ajax({
-        url: `/api/category?query=${self.props.slug}`,
+        url: `/api/v1/category?query=${self.props.slug}`,
         success: function(data) {
           self.setState({ categories: data });
           $(div).css('visibility', 'visible');

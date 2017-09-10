@@ -12,7 +12,7 @@ componentDidMount: function() {
 getDataFromApi: function() {
     var self = this;
     $.ajax({
-      url: '/api/industry',
+      url: '/api/v1/industry',
       success: function(data) {
         self.setState({ industries: data });
       },

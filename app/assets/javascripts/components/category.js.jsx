@@ -13,7 +13,7 @@ var Category = React.createClass({
     var div = e.target.nextElementSibling
     if(self.state.services.length===0){
       $.ajax({
-        url: `/api/service?query=${self.props.slug}`,
+        url: `/api/v1/service?query=${self.props.slug}`,
         success: function(data) {
           self.setState({ services: data });
           $(div).css('visibility', 'visible');

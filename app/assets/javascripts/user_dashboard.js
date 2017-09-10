@@ -1,5 +1,5 @@
-// var API = 'https://corkboard-services.herokuapp.com/api/v1/projects';
-var API = 'http://localhost:3000/api/v1/projects';
+// const API = 'https://corkboard-services.herokuapp.com/api/v1/projects';
+const API = 'http://localhost:3000/api/v1/projects';
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -8,17 +8,17 @@ document.addEventListener("DOMContentLoaded", function() {
     getCompletedProjects();
 });
 
-var submitClose = function() {
+const submitClose = function() {
     $('.close-form').on('submit', function(event) {
-        var id = $('input[name=project_id]').val();
-        var token = $('input[name=token]').val();
+        const id = $('input[name=project_id]').val();
+        const token = $('input[name=token]').val();
         updateProject(id, token);
     });
 }
 
-var getOpenProjects = function() {
-    var user_div = $('#user')
-    var user = user_div.data("user");
+const getOpenProjects = function() {
+    const user_div = $('#user')
+    const user = user_div.data("user");
     $('.open-project').empty();
     return $.ajax({
         url: API + `/find_all?requester_id=${user}&status=0`,
@@ -36,11 +36,11 @@ var getOpenProjects = function() {
     })
 };
 
-var getAcceptedProjects = function() {
-    var user_div = $('#user')
-    var user = user_div.data("user");
-    var token_div = $('#token')
-    var token = token_div.data("token");
+const getAcceptedProjects = function() {
+    const user_div = $('#user')
+    const user = user_div.data("user");
+    const token_div = $('#token')
+    const token = token_div.data("token");
     $('.accepted-project').empty();
     return $.ajax({
         url: API + `/find_all?requester_id=${user}&status=1`,
@@ -59,9 +59,9 @@ var getAcceptedProjects = function() {
     })
 };
 
-var getCompletedProjects = function() {
-    var user_div = $('#user')
-    var user = user_div.data("user");
+const getCompletedProjects = function() {
+    const user_div = $('#user')
+    const user = user_div.data("user");
     $('.closed-project').empty();
     return $.ajax({
         url: API + `/find_all?requester_id=${user}&status=2`,
@@ -79,7 +79,7 @@ var getCompletedProjects = function() {
     })
 };
 
-var updateProject = function(id, token) {
+const updateProject = function(id, token) {
     return $.ajax({
         url: API + '/' + id,
         method: 'PUT',
