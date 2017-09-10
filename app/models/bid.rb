@@ -12,6 +12,7 @@ class Bid < ApplicationRecord
   accepts_nested_attributes_for :attachments
 
   def close_other_bids
-    Bid.where(project_id: self.project_id, status: "open").update_all(status: "rejected")
+    Bid.where(project_id: project_id, status: 'open')
+       .update_all(status: 'rejected')
   end
 end

@@ -1,6 +1,6 @@
 class NewProPresenter
   attr_reader :pro
-  def initialize(session, params={}, pro = Pro.new)
+  def initialize(session, params = {}, pro = Pro.new)
     @session = session
     @params = params
     @pro = pro
@@ -11,7 +11,7 @@ class NewProPresenter
   end
 
   def radius
-    @radius ||= collection(:radius).empty? ? "10" : collection(:radius)
+    @radius ||= collection(:radius).empty? ? '10' : collection(:radius)
   end
 
   def oauth_info
@@ -29,9 +29,10 @@ class NewProPresenter
   def set_session_variables
     session[:service_id] = @params[:service_id]
     session[:zip] = @params[:zip]
-    session[:radius] = @params[:radius].empty? ? "10" : @params[:radius]
+    session[:radius] = @params[:radius].empty? ? '10' : @params[:radius]
   end
 
   private
+
     attr_reader :session, :params
 end

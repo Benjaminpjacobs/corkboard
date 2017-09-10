@@ -13,6 +13,6 @@ class Category < ApplicationRecord
   has_many :services, dependent: :destroy
 
   def generate_uri
-    self.uri = "hire/#{self.industry.slug}/#{self.slug}"
+    self.uri = "hire/#{industry.slug}/#{slug}"
   end
 end

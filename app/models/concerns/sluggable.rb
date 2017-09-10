@@ -3,7 +3,6 @@ module Sluggable
 
   module ClassMethods
     def find(input)
-      # monkey patches .find to be able to find by id and slug
       if input.to_i != 0
         super
       else

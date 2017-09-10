@@ -24,6 +24,7 @@ module FormHelper
       ''
     end
   end
+
   def user_form_email
     case
     when @oauth_info
@@ -31,11 +32,12 @@ module FormHelper
     when @pro
       @pro.email
     when @user
-      @user.email  
+      @user.email
     else
       ''
     end
   end
+
   def which_user
     logged_in? ? 'user' : 'guest'
   end

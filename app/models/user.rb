@@ -3,22 +3,25 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :zipcode, presence: true
   validates_format_of :zipcode,
-              with: /\A\d{5}-\d{4}|\A\d{5}\z/,
-              message: "should be 12345 or 12345-1234",
-              allow_blank: true
+                      with: /\A\d{5}-\d{4}|\A\d{5}\z/,
+                      message: 'should be 12345 or 12345-1234',
+                      allow_blank: true
+
   validates :email, presence: true, uniqueness: true
-  
+
   has_secure_password validations: false
 
   has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
-  
-  has_many :requested_projects, :class_name => 'Project', :foreign_key => 'requester_id'
+
+  has_many :requested_projects,
+           class_name: 'Project',
+           foreign_key: 'requester_id'
 
   has_many :messages
 
   def self.from_omniauth(auth_info)
-    user = where(uid: auth_info[:uid]).first_or_initialize do |new_user|
+    where(uid: auth_info[:uid]).first_or_initialize do |new_user|
       new_user.uid = auth_info.uid
     end
   end
@@ -28,11 +31,11 @@ class User < ApplicationRecord
   end
 
   def pro?
-    self.type == 'Pro'
+    type == 'Pro'
   end
 
-  def self.locate_by(data, oauth=false)
-    oauth ? find_or_initialize_by(uid: data["uid"]) : find_by(email: data)
+  def self.locate_by(data, oauth = false)
+    oauth ? find_or_initialize_by(uid: data['uid']) : find_by(email: data)
   end
 
   def full_name
@@ -54,8 +57,4 @@ class User < ApplicationRecord
   def projects
     requested_projects
   end
-
-  def appear(data = {})
-  end
-
 end

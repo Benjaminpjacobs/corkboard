@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
   private
 
   def set_project
-    @project = Project.find_by(id: params["project_id"].to_i)
+    @project = Project.find_by(id: params['project_id'].to_i)
   end
 
   def project_owner

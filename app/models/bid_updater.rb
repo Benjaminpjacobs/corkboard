@@ -8,14 +8,12 @@ class BidUpdater
 
   def update_bid
     @bid.update!(status: @bid_params)
-    return if @bid_params == "withdrawn" || @bid_params == "rejected"
-    if @bid_params == "accepted"
-      accept_bids
-    end
+    return if @bid_params == 'withdrawn' || @bid_params == 'rejected'
+    accept_bids if @bid_params == 'accepted'
   end
 
   def accept_bids
     @bid.close_other_bids
-    @bid.project.update!(status: "accepted")
+    @bid.project.update!(status: 'accepted')
   end
 end

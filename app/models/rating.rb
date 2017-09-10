@@ -6,5 +6,4 @@ class Rating
   def collect_reviews(pro)
     Review.where(user_id: pro.id)
   end
-
 end

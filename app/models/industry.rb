@@ -13,6 +13,6 @@ class Industry < ApplicationRecord
   has_many :services, through: :categories
 
   def generate_uri
-    self.uri = "hire/#{self.slug}"
+    self.uri = "hire/#{slug}"
   end
 end

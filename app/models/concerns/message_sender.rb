@@ -5,7 +5,7 @@ module MessageSender
 
     client = Twilio::REST::Client.new(account_sid, auth_token)
 
-    message = client.messages.create(
+    client.messages.create(
       from:  ENV['TWILIO_PHONE'],
       to:    phone_number,
       body:  code

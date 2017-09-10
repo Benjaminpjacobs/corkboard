@@ -35,6 +35,7 @@ gem 'jwt'
 gem 'newrelic_rpm'
 gem 'client_side_validations'
 gem 'babel-transpiler'
+gem 'rubocop', require: false
 
 group :test do
   gem 'vcr'

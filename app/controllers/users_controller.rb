@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :omniauth_user
   include AuthyConcern
-  
+
   def new
     @user = User.new
     @oauth_info = OauthParse.new(session[:omniauth_info])
@@ -22,7 +22,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   private
 
   def user_params
@@ -33,5 +32,4 @@ class UsersController < ApplicationController
                                  :password,
                                  :password_confirmation)
   end
-
 end

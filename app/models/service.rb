@@ -2,7 +2,7 @@ class Service < ApplicationRecord
   include Sluggable
 
   has_many :pro_services
-  has_many :pros, through: :pro_services, foreign_key: "user_id"
+  has_many :pros, through: :pro_services, foreign_key: 'user_id'
   before_validation :generate_slug
   before_save :generate_uri
 
@@ -12,7 +12,7 @@ class Service < ApplicationRecord
                    uniqueness: true
 
   belongs_to :category
-  delegate :industry, :to => :category, :allow_nil => false
+  delegate :industry, to: :category, allow_nil: false
 
   has_many :projects
 
@@ -23,7 +23,6 @@ class Service < ApplicationRecord
   end
 
   def generate_uri
-    self.uri = "hire/#{self.slug}/new"
+    self.uri = "hire/#{slug}/new"
   end
-
 end

@@ -1,5 +1,4 @@
 FactoryGirl.define do
-
   factory :project do
     status 0
     zipcode 80210
@@ -13,5 +12,4 @@ FactoryGirl.define do
       create(:attachment, attachable: project)
     end   
   end
-  
 end

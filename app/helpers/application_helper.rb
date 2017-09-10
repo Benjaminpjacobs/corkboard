@@ -10,9 +10,7 @@ module ApplicationHelper
   end
 
   def sign_up_button
-    if !logged_in?
-      link_to 'Sign Up', choose_account_path
-    end
+    link_to 'Sign Up', choose_account_path unless logged_in?
   end
 
   def dashboard_button
@@ -25,20 +23,17 @@ module ApplicationHelper
 
   def new_project_button
     if logged_in? && pro_user?
-      link_to "Find Project", pro_dashboard_open_projects_path
+      link_to 'Find Project', pro_dashboard_open_projects_path
     elsif logged_in?
       link_to 'New Project', hire_index_path
     end
   end
 
   def browse_button
-    if logged_in? && !pro_user?
-      link_to "Browse", hire_index_path
-    end
+    link_to 'Browse', hire_index_path if logged_in? && !pro_user?
   end
 
   def home_page?
-    params["controller"] == "home" && params["action"] == "index"
+    params['controller'] == 'home' && params['action'] == 'index'
   end
-
 end
