@@ -1,18 +1,18 @@
-var Icon = React.createClass({
+const Icon = React.createClass({
   propTypes: {
     href: React.PropTypes.string,
     id:React.PropTypes.string,
     className:React.PropTypes.string,
     name:React.PropTypes.string
   },
-  showsLabel: function(e) {
+  showsLabel: (e) => {
     e.target.parentElement.nextElementSibling.style.display = 'block';
   },
-  hidesLabel: function(e){
+  hidesLabel: (e) => {
     e.target.parentElement.nextElementSibling.style.display = 'none';
   },
   render: function() {
-    var icon = this.props;
+    const icon = this.props;
     return(
       <div className="icon">
         <a href={icon.href} id={icon.id}>

@@ -1,7 +1,6 @@
 
-var HomeIcons = React.createClass({
-  render: function() {
-    return(
+const HomeIcons = React.createClass({
+  render: () => 
         <div className="icons icons-container">
           <div className="icons-row">
             <Icon href="hire/home-improvement" 
@@ -45,6 +44,4 @@ var HomeIcons = React.createClass({
                   name="Pets"/>
           </div>
         </div>     
-    )
-  }
 });

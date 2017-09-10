@@ -29,7 +29,7 @@ var Industry = React.createClass({
           alert('Cannot get data from API: ', error);
         }
       });
-    }else{
+    } else {
       $('.categories').removeClass('active');
       $(industry).removeClass('active');
       setTimeout(function(){
@@ -40,13 +40,12 @@ var Industry = React.createClass({
   },
   
   render: function(){
-    var industry = this.props
-    var collection = []
-    this.state.categories.forEach(function(category){
-      collection.push(<Category name={category.name}
+    const industry = this.props
+    const collection = this.state.categories.map((category)=>{
+      return <Category name={category.name}
                                 uri={category.uri}
                                 slug={category.slug}
-                                key={'category' + category.id}/>)
+                                key={'category' + category.id}/>
       }.bind(this));
     return(
       <li className="list-group-item-heading industries">

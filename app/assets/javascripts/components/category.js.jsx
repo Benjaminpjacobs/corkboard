@@ -1,4 +1,4 @@
-var Category = React.createClass({
+const Category = React.createClass({
     propTypes:{
     name: React.PropTypes.string,
     uri: React.PropTypes.string,
@@ -9,8 +9,8 @@ var Category = React.createClass({
   },
 
   getServices: function(e){
-    var self = this
-    var div = e.target.nextElementSibling
+    const self = this
+    const div = e.target.nextElementSibling
     if(self.state.services.length===0){
       $.ajax({
         url: `/api/v1/service?query=${self.props.slug}`,
@@ -32,8 +32,8 @@ var Category = React.createClass({
     }
   },
   render: function(){
-      var category = this.props
-      var collection = []
+      const category = this.props
+      const collection = []
       this.state.services.forEach(function(service){
        collection.push(<Service name={service.name}
                                 uri={service.uri}

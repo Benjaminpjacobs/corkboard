@@ -1,5 +1,5 @@
 
-var Result = React.createClass({
+const Result = React.createClass({
   propTypes: {
     name: React.PropTypes.string,
     uri: React.PropTypes.string,
@@ -11,7 +11,7 @@ var Result = React.createClass({
     this.setState({class: 'click-res'})
   },
   render: function() {
-    var result = this.props.result;
+    const result = this.props.result;
     return(
       <a href={result.uri} className={this.state.class} onClick={this.handleClick}>
         <div>

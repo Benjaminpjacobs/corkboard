@@ -1,7 +1,7 @@
-var SearchForm = React.createClass({
+const SearchForm = React.createClass({
     handleSearch: function() {
-    var query = document.getElementById('query').value
-    var self = this;
+    const query = document.getElementById('query').value
+    const self = this;
     $.ajax({
       url: 'https://corkboard-micro.herokuapp.com/api/v1/records',
       data: { query: query },

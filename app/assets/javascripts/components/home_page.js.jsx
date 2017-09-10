@@ -1,14 +1,15 @@
 
 var HomePage = React.createClass({
 
-getInitialState: function() {
+getInitialState: () => {
   return { results: [] };
   },
 
 handleSearch: function(results) {
     this.setState({ results: results });
   },
-  render: function() {
+  
+render: function() {
     return(
       <div>
         <div className="jumbotron">
