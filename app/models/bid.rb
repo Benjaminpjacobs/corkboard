@@ -1,6 +1,5 @@
 class Bid < ApplicationRecord
   validates :comment, presence: true
-  # validates :amount, presence: true
 
   belongs_to :pro, foreign_key: :user_id
   belongs_to :project
@@ -13,7 +12,6 @@ class Bid < ApplicationRecord
   accepts_nested_attributes_for :attachments
 
   def close_other_bids
-    bids = Bid.where(project_id: self.project_id, status: "open")
-    bids.each { |b| b.update!(status: "rejected")}
+    Bid.where(project_id: self.project_id, status: "open").update_all(status: "rejected")
   end
 end

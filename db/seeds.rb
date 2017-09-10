@@ -18,6 +18,7 @@ class Seed
     generate_bids_with_conversations
     generate_project_with_review
     generate_project_with_no_review
+    generate_multiple_bids_for_project
   end
 
   def generate_bids_with_conversations
@@ -150,6 +151,47 @@ class Seed
     project2 = user.projects.create!(service_id: 55, zipcode: 80223, description: "I need french lessons.", status: "open", timeline: "Within 2 Weeks")
 
     bid = project.bids.create!(user_id: pro.id, amount: "100", comment: "I teach good French.", status: "accepted")
+  end
+
+  def generate_multiple_bids_for_project
+    service = Service.find_by(name: "French Lessons")
+    user = User.find_by_email('no_review@example.com')
+
+    pro1 = Pro.create!(first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    zipcode: "80219",
+    phone_number: Faker::PhoneNumber.phone_number,
+    email: Faker::Internet.email,
+    password: "password",
+    country_code: "+1")
+    pro2 = Pro.create!(first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    zipcode: "80219",
+    phone_number: Faker::PhoneNumber.phone_number,
+    email: Faker::Internet.email,
+    password: "password",
+    country_code: "+1")
+    pro3 = Pro.create!(first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    zipcode: "80219",
+    phone_number: Faker::PhoneNumber.phone_number,
+    email: Faker::Internet.email,
+    password: "password",
+    country_code: "+1")
+    
+    pro_service1 = pro1.pro_services.create(service_id: service.id, radius: 25)
+    pro_service2 = pro2.pro_services.create(service_id: service.id, radius: 25)
+    pro_service2 = pro3.pro_services.create(service_id: service.id, radius: 25)
+    
+    
+    project = user.projects.create!(service_id: service.id, zipcode: 80223, description: "I need more french lessons.", status: "open", timeline: "ASAP")
+    
+    
+    bid1 = project.bids.create!(user_id: pro1.id, amount: "100", comment: "I teach good French.", status: "open")
+    bid2 = project.bids.create!(user_id: pro2.id, amount: "200", comment: "I teach better French.", status: "open")
+    bid3 = project.bids.create!(user_id: pro3.id, amount: "300", comment: "I teach best French.", status: "open")
+    
+    
   end
 end
 
