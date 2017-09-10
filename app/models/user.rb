@@ -28,11 +28,7 @@ class User < ApplicationRecord
   end
 
   def pro?
-    if self.type == 'Pro'
-      true
-    else
-      false
-    end
+    self.type == 'Pro'
   end
 
   def self.locate_by(data, oauth=false)
