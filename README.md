@@ -1,4 +1,5 @@
-## Consider It Done
+## Consider It Done 
+![travis_status](https://travis-ci.org/Benjaminpjacobs/corkboard.svg?branch=master)
 
 Live production site available [here](https://corkboard-services.herokuapp.com/)
 
